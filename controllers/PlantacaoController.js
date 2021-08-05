@@ -8,8 +8,21 @@ const plantaService = new PlantaService()
 
 class PlantacaoController {
   // TODO: create agenda e delete agenda @Dacio
-  // TODO: findAll -> @Vitor
+  // TODO: findAll -> @Vitor  Done
   // TODO: testar delete
+  static async findAll(req, res){
+    try{
+      const plantacoes = await plantacaoService.findAll()
+      if(plantacoes == 0){
+        return res.status(404).send()
+      }
+      return res.status(200).send(plantacoes)
+    } catch{
+      return res.status(500).json(error.message)
+    }
+  }
+
+
   static async delete (req, res) {
     const { id } = req.params
 

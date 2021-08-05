@@ -2,8 +2,36 @@ const { SoloService } = require('../services')
 const soloService = new SoloService()
 
 class SoloController {
-  // TODO: Delete e getAll -> @Vitor
+  // TODO: Delete e getAll -> @Vitor Done
   // TODO: finById -> @Dacio
+
+  static async findAll(req, res){
+    try{
+      const solos = await soloService.findAll()
+      if(solos == 0){
+        return res.status(404).send()
+      }
+      return res.status(200).send(solos)
+    } catch{
+      return res.status(500).json(error.message)
+    }
+  }
+
+
+  static async delete (req, res) {
+    const { id } = req.params
+
+    try {
+      const resp = await soloService.delete(id)
+      if (resp == 0) {
+        return res.status(404).send()
+      }
+      return res.status(200).send()
+    } catch (error) {
+      return res.status(500).json(error.message)
+    }
+  }
+
   static async update (req, res) {
     const fields = req.body
     const { id } = req.params
@@ -31,5 +59,6 @@ class SoloController {
     }
   }
 }
+
 
 module.exports = SoloController
