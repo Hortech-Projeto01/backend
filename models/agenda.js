@@ -12,7 +12,6 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate (models) {
       Agenda.belongsTo(models.Plantacao, {
-        onDelete: 'CASCADE',
         foreignKey: 'plantacao_id'
       })
     }

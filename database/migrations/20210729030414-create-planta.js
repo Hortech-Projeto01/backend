@@ -12,7 +12,7 @@ module.exports = {
         allowNull: false
       },
       especie: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.STRING
       },
       tecnicas_plantio: {
         type: Sequelize.STRING
@@ -34,15 +34,6 @@ module.exports = {
       },
       nivel_incidencia_solar: {
         type: Sequelize.FLOAT
-      },
-      // TODO: Apagar isso aqui
-      plantacao_id: {
-        allowNull: true,
-        type: Sequelize.UUID,
-        references: {
-          model: 'Plantacao',
-          key: 'id'
-        }
       },
       createdAt: {
         allowNull: false,

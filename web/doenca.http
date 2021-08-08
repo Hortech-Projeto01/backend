@@ -1,9 +1,12 @@
 @url = http://127.0.0.1:3001
-@id=c57c6ee3-18a9-4398-886a-c21bcf008cdd
+@id=28db822a-9f57-4572-b23a-e10ec3cf9c82
 
 //Gets
 ###
 GET {{url}}/doencas/{{id}} HTTP/1.1
+Accept: application/json
+###
+GET {{url}}/doencas/plantas/{{id}} HTTP/1.1
 Accept: application/json
 
 ###
@@ -36,3 +39,8 @@ Accept: application/json
     "prevencao": "parar de ser otario5",
     "tratamento": "agrotoxico"
 }
+###
+//Deletes
+###
+DELETE {{url}}/doencas/{{id}} HTTP/1.1
+Accept: application/json

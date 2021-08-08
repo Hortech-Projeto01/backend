@@ -21,8 +21,9 @@ module.exports = (sequelize, DataTypes) => {
       // preciso de uma relação bidirecional entre agenda e plantacao
       // sequelize model:create --name PlantacaoPlanta --attributes plantacao_id:uuid,planta_id:uuid,freezeTableName:true
       Plantacao.hasOne(models.Agenda, {
+        foreignKey: 'plantacao_id',
         onDelete: 'CASCADE',
-        foreignKey: 'plantacao_id'
+        hooks: true
       })
       Plantacao.belongsTo(models.Solo, {
         foreignKey: 'solo_id'

@@ -30,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
   };
   Planta.init({
     nome: DataTypes.STRING,
-    especie: DataTypes.STRING,//Deveria ser string
+    especie: DataTypes.STRING, // Deveria ser string
     tecnicas_plantio: DataTypes.STRING,
     infos_por_estacao: DataTypes.STRING,
     cor_folhas: DataTypes.STRING,

@@ -13,7 +13,8 @@ module.exports = {
       plantacao_id: {
         allowNull: false,
         type: Sequelize.UUID,
-        references: { model: 'Plantacao', key: 'id' }
+        references: { model: 'Plantacao', key: 'id' },
+        onDelete: 'CASCADE'
       },
       createdAt: {
         allowNull: false,
