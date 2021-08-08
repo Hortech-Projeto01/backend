@@ -1,22 +1,19 @@
+/* eslint-disable eqeqeq */
 const { SoloService } = require('../services')
 const soloService = new SoloService()
 
 class SoloController {
-  // TODO: Delete e getAll -> @Vitor Done
-  // TODO: finById -> @Dacio
-
-  static async findAll(req, res){
-    try{
+  static async findAll (req, res) {
+    try {
       const solos = await soloService.findAll()
-      if(solos == 0){
+      if (solos == 0) {
         return res.status(404).send()
       }
       return res.status(200).send(solos)
-    } catch{
+    } catch (error) {
       return res.status(500).json(error.message)
     }
   }
-
 
   static async delete (req, res) {
     const { id } = req.params
@@ -58,7 +55,20 @@ class SoloController {
       return res.status(500).json(error.message)
     }
   }
-}
 
+  static async findById (req, res) {
+    try {
+      const { id } = req.params
+
+      const solo = await soloService.findById(id)
+      if (!solo) {
+        return res.status(404).send(solo)
+      }
+      return res.status(200).send(solo)
+    } catch (error) {
+      return res.status(500).json(error.message)
+    }
+  }
+}
 
 module.exports = SoloController

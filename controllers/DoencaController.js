@@ -1,18 +1,19 @@
+/* eslint-disable eqeqeq */
 const { DoencaService } = require('../services')
 const doencaService = new DoencaService()
 
 class DoencaController {
-  // TODO: findall, update -> @Vitor Done
-  // TODO: delete, findById -> @Dacio
+  // Quando deletar (tanto doenca quanto planta)
+  // Lembrar de deletar a relação
 
-  static async findAll(req, res){
-    try{
+  static async findAll (req, res) {
+    try {
       const doencas = await doencaService.findAll()
-      if(doencas == 0){
+      if (doencas == 0) {
         return res.status(404).send()
       }
       return res.status(200).send(doencas)
-    } catch{
+    } catch (error) {
       return res.status(500).json(error.message)
     }
   }
@@ -42,6 +43,34 @@ class DoencaController {
         return res.status(404).send(doenca)
       }
       return res.status(200).send(doenca)
+    } catch (error) {
+      return res.status(500).json(error.message)
+    }
+  }
+
+  static async delete (req, res) {
+    const { id } = req.params
+
+    try {
+      const resp = await doencaService.delete(id)
+      if (resp == 0) {
+        return res.status(404).send()
+      }
+      return res.status(200).send()
+    } catch (error) {
+      return res.status(500).json(error.message)
+    }
+  }
+
+  static async getPlantasFromDoenca (req, res) {
+    try {
+      const { id } = req.params
+
+      const plantas = await doencaService.getPlantas(id)
+      if (plantas == 0) {
+        return res.status(404).send()
+      }
+      return res.status(200).send(plantas)
     } catch (error) {
       return res.status(500).json(error.message)
     }

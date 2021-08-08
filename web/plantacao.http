@@ -1,9 +1,19 @@
 @url = http://127.0.0.1:3001
-@id=70b1cc0f-986a-4102-85c4-aae5acca7de8
-@planta_id=b15783e1-5473-4664-9def-ebc882dbe8de
+@id=8dda1e34-46bf-405e-9a55-2fba5437d887
+@planta_id=0498a289-fa88-4d7e-9c19-6519c620300b
+@solo_id=36cbedd5-3d47-4e8f-b052-a95dae4a8b58
 
 //Gets
 GET {{url}}/plantacoes/{{id}} HTTP/1.1
+Accept: application/json
+###
+GET {{url}}/plantacoes/plantas/{{id}} HTTP/1.1
+Accept: application/json
+###
+GET {{url}}/plantacoes/plantas/{{id}}/{{planta_id}} HTTP/1.1
+Accept: application/json
+###
+GET {{url}}/plantacoes/solos/{{id}}/{{solo_id}} HTTP/1.1
 Accept: application/json
 ###
 //Posts
@@ -12,11 +22,14 @@ Content-Type: application/json
 Accept: application/json
 
 {
-   "solo_id": "1112beab-fab9-4ae5-ab87-8844733dcfb4" 
+   "solo_id": "{{solo_id}}"
 }
 ###
-// DELETES
 DELETE {{url}}/plantacoes/{{id}} HTTP/1.1
+Accept: application/json
+###
+// DELETES
+DELETE {{url}}/plantacoes/plantas/{{id}}/{{planta_id}} HTTP/1.1
 Accept: application/json
 
 // PUTS

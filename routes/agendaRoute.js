@@ -3,9 +3,9 @@ const AgendaController = require('../controllers/AgendaController')
 
 const router = Router()
 
-router.delete('/agendas/:id', AgendaController.delete)
-router.post('/agendas', AgendaController.insert)
 router.get('/agendas', AgendaController.findAll)
 router.put('/agendas/:id', AgendaController.update)
+router.get('/agendas/:id', AgendaController.findById)
+// router.post('/agendas', AgendaController.insert)
 
 module.exports = router
