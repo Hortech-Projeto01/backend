@@ -1,5 +1,49 @@
 @url = http://127.0.0.1:3001
 
+@id = 46094440-53fc-4089-ad4a-2f0cb89d6589
+
 //Gets
 GET {{url}}/plantas HTTP/1.1
 Accept: application/json
+
+###
+//Create
+POST {{url}}/plantas
+Content-Type: application/json
+Accept: application/json
+
+{
+   "nome": "Milho3",
+   "especie": "True",
+   "tecnicas_plantio": "Semeadura",
+   "infos_por_estacao": "Verão",
+   "cor_folhas": "Verde",
+   "num_frutos_colhidos": 10,
+   "qtd_diaria_agua": 2.5,
+   "qtd_media_sementes": 40,
+   "nivel_incidencia_solar": 5.5,
+   "plantacao_id": "6b44ae84-fd5b-4c24-8c6b-fc7bfe4aaf28"
+}
+
+###
+//FindAll
+GET {{url}}/plantas HTTP/1.1
+Accept: application/json
+
+###
+//Update
+PUT {{url}}/plantas/{{id}} HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+{
+   "nome": "Milho10",
+   "especie": "True",
+   "tecnicas_plantio": "Semeadura",
+   "infos_por_estacao": "Inverno",
+   "cor_folhas": "Amarela",
+   "num_frutos_colhidos": 15,
+   "qtd_diaria_agua": 2.5,
+   "qtd_media_sementes": 30,
+   "nivel_incidencia_solar": 5.5
+}

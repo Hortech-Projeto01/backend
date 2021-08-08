@@ -8,5 +8,5 @@ router.get('/plantacoes/:id', PlantacaoController.findById)
 router.put('/plantacoes/:plantacao_id/:planta_id', PlantacaoController.addPlantaToPlantacao)
 router.put('/plantacoes/:id', PlantacaoController.update)
 router.post('/plantacoes', PlantacaoController.insert)
-
+router.get('/plantacoes', PlantacaoController.findAll)
 module.exports = router
