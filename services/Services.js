@@ -1,4 +1,7 @@
+/* eslint-disable eqeqeq */
+const NotFound = require('../errors/NotFound')
 const database = require('../models')
+const { soloValidator } = require('../utils/validators')
 
 class Services {
   constructor (nomeModelo) {
@@ -10,27 +13,59 @@ class Services {
   }
 
   async findById (id) {
-    return database[this.nomeModelo].findOne({
+    const entity = await database[this.nomeModelo].findOne({
       where: {
         id
       }
     })
+    if (!entity) {
+      throw new NotFound(this.nomeModelo)
+    }
+    return entity
   }
 
   async create (data) {
+    switch (this.nomeModelo) {
+      case 'Solo':
+        soloValidator(data)
+        break
+      default:
+        break
+    }
+
     return database[this.nomeModelo].create(data)
   }
 
   async update (data, id, transacao = {}) {
-    return database[this.nomeModelo].update(data, { where: { id } }, transacao)
+    switch (this.nomeModelo) {
+      case 'Solo':
+        soloValidator(data)
+        break
+      default:
+        break
+    }
+
+    const count = await database[this.nomeModelo].update(data, { where: { id } }, transacao)
+
+    // eslint-disable-next-line eqeqeq
+    if (count == 0) {
+      throw new NotFound(this.nomeModelo)
+    }
+    return count
   }
 
   async delete (id) {
-    return database[this.nomeModelo].destroy({
+    const count = await database[this.nomeModelo].destroy({
       where: {
         id
       }
     })
+
+    // eslint-disable-next-line eqeqeq
+    if (count == 0) {
+      throw new NotFound(this.nomeModelo)
+    }
+    return count
   }
 }
 
