@@ -1,5 +1,7 @@
 const Services = require('./Services')
 const database = require('../models')
+const { NotFound } = require('../errors')
+const { plantacaoValidator } = require('../utils/validators')
 
 class PlantacaoService extends Services {
   constructor () {
@@ -10,9 +12,10 @@ class PlantacaoService extends Services {
   }
 
   async addPlanta (idPlanta, idPlantacao) {
+    await this.plantas.findById(idPlanta)
     const plantacao = await super.findById(idPlantacao)
     if (!plantacao) {
-      return 0
+      throw new NotFound(this.nomeModelo)
     }
     return await plantacao.addPlanta(idPlanta)
   }
@@ -20,12 +23,16 @@ class PlantacaoService extends Services {
   async getPlantas (idPlantacao) {
     const plantacao = await super.findById(idPlantacao)
     if (!plantacao) {
-      return 0
+      throw new NotFound(this.nomeModelo)
     }
     return await plantacao.getPlantas()
   }
 
-  async create (plantacao) {
+  async create (plantacao, soloId) {
+    plantacaoValidator(plantacao)
+
+    await this.solo.findById(soloId)
+
     const newPlantacao = await super.create(plantacao)
 
     const time = new Date()
@@ -37,10 +44,25 @@ class PlantacaoService extends Services {
     return newPlantacao
   }
 
+  async update (data, id, idSolo, transacao = {}) {
+    plantacaoValidator(data)
+
+    await this.solo.findById(idSolo)
+
+    const count = await database[this.nomeModelo].update(data, { where: { id } }, transacao)
+
+    // eslint-disable-next-line eqeqeq
+    if (count == 0) {
+      throw new NotFound(this.nomeModelo)
+    }
+    return count
+  }
+
   async getPlanta (idPlanta, idPlantacao) {
+    await this.plantas.findById(idPlanta)
     const plantacao = await super.findById(idPlantacao)
     if (!plantacao) {
-      return null
+      throw new NotFound(this.nomeModelo)
     }
     return await this.plantas.findById(idPlanta)
   }
@@ -48,26 +70,40 @@ class PlantacaoService extends Services {
   async getSolo (idSolo, idPlantacao) {
     const plantacao = await super.findById(idPlantacao)
     if (!plantacao) {
-      return null
+      throw new NotFound(this.nomeModelo)
     }
-    return await this.solo.findById(idSolo)
+    const solo = await this.solo.findById(idSolo)
+    // eslint-disable-next-line eqeqeq
+    if (solo.id != plantacao.solo_id) {
+      throw new NotFound(this.solo.nomeModelo)
+    }
+    return solo
   }
 
   async deletePlanta (idPlanta, idPlantacao) {
     const plantacao = await super.findById(idPlantacao)
     if (!plantacao) {
-      return 0
+      throw new NotFound(this.nomeModelo)
     }
-    return await plantacao.removePlanta(idPlanta)
+    const count = await plantacao.removePlanta(idPlanta)
+    // eslint-disable-next-line eqeqeq
+    if (count == 0) {
+      throw new NotFound(this.plantas.nomeModelo)
+    }
+    return count
   }
 
   async findById (id) {
-    return database.Plantacao.findOne({
+    const plantacao = await database.Plantacao.findOne({
       where: {
         id
       },
       include: [{ model: database.Planta, as: 'plantas' }, database.Solo]
     })
+    if (!plantacao) {
+      throw new NotFound(this.nomeModelo)
+    }
+    return plantacao
   }
 }
 

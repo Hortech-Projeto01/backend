@@ -1,5 +1,6 @@
 @url = http://127.0.0.1:3001
-@id = 36981c8f-0d61-455b-ae83-ed11f3aeb380
+@id = 4ba2c700-5c5c-473d-b0c8-aff79e36c4d4
+// 36cbedd5-3d47-4e8f-b052-a95dae4a8b58
 
 //Gets
 
@@ -12,7 +13,6 @@ Accept: application/json
 {
     "nivel_ph": 6.0,
     "tipo_solo": "TIPOB",
-    "prevencao": "tralala",
     "temperatura": 39.6,
     "tipo_vaso": "TIPOA"
 }
@@ -24,7 +24,6 @@ Accept: application/json
 {
     "nivel_ph": 5.8,
     "tipo_solo": "TIPOA",
-    "prevencao": "tralala2",
     "temperatura": 35.2,
     "tipo_vaso": "TIPOB"
 }
@@ -34,11 +33,10 @@ Content-Type: application/json
 Accept: application/json
 
 {
-    "nivel_ph": 3.2,
-    "tipo_solo": "TIPOC",
-    "prevencao": "tralala3",
-    "temperatura": 17.7,
-    "tipo_vaso": "TIPOA"
+    "nivel_ph": 7.0,
+    "tipo_solo": "TIPOA",
+    "temperatura": 39.9
+    // "tipo_vaso": "TIPOB"
 }
 ###
 // Puts
@@ -49,7 +47,6 @@ Accept: application/json
 {
     "nivel_ph": 6.2,
     "tipo_solo": "TIPOC",
-    "prevencao": "blabla",
     "temperatura": 36.2,
     "tipo_vaso": "TIPOB"
 }
@@ -62,4 +59,7 @@ Accept: application/json
 ###
 //FindAll
 GET {{url}}/solos HTTP/1.1
+Accept: application/json
+###
+GET {{url}}/solos/{{id}} HTTP/1.1
 Accept: application/json

@@ -1,3 +1,4 @@
+const { NotFound } = require('../errors')
 const database = require('../models')
 const Services = require('./Services')
 
@@ -37,12 +38,17 @@ class PlantaService extends Services {
   }
 
   async findById (id) {
-    return database.Planta.findOne({
+    const planta = await database.Planta.findOne({
       where: {
         id
       },
       include: [{ model: database.Doenca, as: 'doencas' }]
     })
+
+    if (!planta) {
+      throw new NotFound(this.nomeModelo)
+    }
+    return planta
   }
 }
 
