@@ -2,6 +2,8 @@
 const NotFound = require('../errors/NotFound')
 const database = require('../models')
 const { soloValidator } = require('../utils/validators')
+const { doencaValidator } = require('../utils/validators')
+const { plantaValidator } = require('../utils/validators')
 
 class Services {
   constructor (nomeModelo) {
@@ -29,6 +31,12 @@ class Services {
       case 'Solo':
         soloValidator(data)
         break
+      case 'Doenca':
+        doencaValidator(data)
+        break
+      case 'Planta':
+        plantaValidator(data)
+        break
       default:
         break
     }
@@ -40,6 +48,12 @@ class Services {
     switch (this.nomeModelo) {
       case 'Solo':
         soloValidator(data)
+        break
+      case 'Doenca':
+        doencaValidator(data)
+        break
+      case 'Planta':
+        plantaValidator(data)
         break
       default:
         break

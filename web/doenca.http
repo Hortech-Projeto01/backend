@@ -1,5 +1,5 @@
 @url = http://127.0.0.1:3001
-@id=28db822a-9f57-4572-b23a-e10ec3cf9c82
+@id=929b32fd-9948-46d9-95e9-69be5af02d89
 
 //Gets
 ###
@@ -16,12 +16,23 @@ Content-Type: application/json
 Accept: application/json
 
 {
-    "nome": "dodoi4",
+    "nome": "aabbcc",
     "transmissao": "solo",
-    "prevencao": "parar de ser otario2",
+    "prevencao": "asdf",
     "tratamento": "agrotoxico"
 }
 
+###
+POST {{url}}/doencas HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+{
+    "nome": "testando",
+    "transmissao": "asdfasd",
+    "prevencao": "asdfsadff",
+    "tratamento": "usar adubo especifico"
+}
 ###
 //findAll
 GET {{url}}/doencas HTTP/1.1
@@ -34,9 +45,9 @@ Content-Type: application/json
 Accept: application/json
 
 {
-    "nome": "dodoi10",
+    "nome": "testando",
     "transmissao": "solo",
-    "prevencao": "parar de ser otario5",
+    "prevencao": "parar de ser otario",
     "tratamento": "agrotoxico"
 }
 ###

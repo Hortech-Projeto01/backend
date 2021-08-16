@@ -6,83 +6,66 @@ class DoencaController {
   // Quando deletar (tanto doenca quanto planta)
   // Lembrar de deletar a relação
 
-  static async findAll (req, res) {
+  static async findAll (req, res, next) {
     try {
       const doencas = await doencaService.findAll()
-      if (doencas == 0) {
-        return res.status(404).send()
-      }
       return res.status(200).send(doencas)
     } catch (error) {
-      return res.status(500).json(error.message)
+      next(error) 
     }
   }
 
-  static async update (req, res) {
+  static async update (req, res, next) {
     const fields = req.body
     const { id } = req.params
 
     try {
-      const resp = await doencaService.update(fields, id)
-      if (resp == 0) {
-        return res.status(404).send()
-      }
+      await doencaService.update(fields, id)
       const updatedDoenca = await doencaService.findById(id)
       return res.status(200).send(updatedDoenca)
     } catch (error) {
-      return res.status(500).json(error.message)
+      next(error)
     }
   }
 
-  static async findById (req, res) {
+  static async findById (req, res, next) {
     try {
       const { id } = req.params
-
       const doenca = await doencaService.findById(id)
-      if (!doenca) {
-        return res.status(404).send(doenca)
-      }
       return res.status(200).send(doenca)
     } catch (error) {
-      return res.status(500).json(error.message)
+      next(error)
     }
   }
 
-  static async delete (req, res) {
+  static async delete (req, res, next) {
     const { id } = req.params
 
     try {
-      const resp = await doencaService.delete(id)
-      if (resp == 0) {
-        return res.status(404).send()
-      }
+      await doencaService.delete(id)
       return res.status(200).send()
     } catch (error) {
-      return res.status(500).json(error.message)
+      next(error)
     }
   }
 
-  static async getPlantasFromDoenca (req, res) {
+  static async getPlantasFromDoenca (req, res, next) {
     try {
       const { id } = req.params
-
       const plantas = await doencaService.getPlantas(id)
-      if (plantas == 0) {
-        return res.status(404).send()
-      }
       return res.status(200).send(plantas)
     } catch (error) {
-      return res.status(500).json(error.message)
+      next(error)
     }
   }
 
-  static async insert (req, res) {
+  static async insert (req, res, next) {
     const doenca = req.body
     try {
       const newDoenca = await doencaService.create(doenca)
       return res.status(201).send(newDoenca)
     } catch (error) {
-      return res.status(500).json(error.message)
+      next(error)
     }
   }
 }
