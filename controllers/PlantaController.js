@@ -8,135 +8,105 @@ class PlantaController {
   // TODO: getDoencaByPlanta, insertDoenca e delete -> @Dacio
   // O campo especie deve ser var char
 
-  static async create (req, res) {
+  static async create (req, res, next) {
     const planta = req.body
     try {
       const newPlanta = await plantaService.create(planta)
       return res.status(201).send(newPlanta)
     } catch (error) {
-      return res.status(500).json(error.message)
+      next(error)
     }
   }
 
-  static async update (req, res) {
+  static async update (req, res, next) {
     const fields = req.body
     const { id } = req.params
 
     try {
-      const resp = await plantaService.update(fields, id)
-      if (resp == 0) {
-        return res.status(404).send()
-      }
+      await plantaService.update(fields, id)
       const updatedPlanta = await plantaService.findById(id)
       return res.status(200).send(updatedPlanta)
     } catch (error) {
-      return res.status(500).json(error.message)
+      next(error)
     }
   }
 
-  static async findAll (req, res) {
+  static async findAll (req, res, next) {
     try {
       const plantas = await plantaService.findAll()
-      if (plantas == 0) {
-        return res.status(404).send()
-      }
       return res.status(200).send(plantas)
     } catch (error) {
-      return res.status(500).json(error.message)
+      next(error)
     }
   }
 
-  static async delete (req, res) {
+  static async delete (req, res, next) {
     const { id } = req.params
 
     try {
-      const resp = await plantaService.delete(id)
+      await plantaService.delete(id)
       // eslint-disable-next-line eqeqeq
-      if (resp == 0) {
-        return res.status(404).send()
-      }
       return res.status(200).send()
     } catch (error) {
-      return res.status(500).json(error.message)
+      next(error)
     }
   }
 
-  static async addDoencaToPlanta (req, res) {
+  static async addDoencaToPlanta (req, res, next) {
     const plantaId = req.params.planta_id
     const doencaId = req.params.doenca_id
 
     try {
-      const doenca = await doencaService.findById(doencaId)
-
-      if (doenca == 0) {
-        return res.status(404).send()
-      }
-      const planta = await plantaService.addDoenca(plantaId, doencaId)
-
-      if (planta == 0) {
-        return res.status(404).send()
-      }
+      await doencaService.findById(doencaId)
+      await plantaService.addDoenca(plantaId, doencaId)
       return res.status(200).send()
     } catch (error) {
-      return res.status(500).json(error.message)
+      next(error)
     }
   }
 
-  static async getDoencaFromPlanta (req, res) {
+  static async getDoencaFromPlanta (req, res, next) {
     const plantaId = req.params.planta_id
     const doencaId = req.params.doenca_id
 
     try {
       const planta = await plantaService.getDoenca(doencaId, plantaId)
-      if (!planta) {
-        return res.status(404).send()
-      }
       return res.status(200).send(planta)
     } catch (error) {
-      return res.status(500).json(error.message)
+      next(error)
     }
   }
 
-  static async getDoencasFromPlanta (req, res) {
+  static async getDoencasFromPlanta (req, res, next) {
     try {
       const { id } = req.params
 
       const doencas = await plantaService.getDoencas(id)
-      if (doencas == 0) {
-        return res.status(404).send()
-      }
       return res.status(200).send(doencas)
     } catch (error) {
-      return res.status(500).json(error.message)
+      next(error)
     }
   }
 
-  static async deleteDoencaFromPlanta (req, res) {
+  static async deleteDoencaFromPlanta (req, res, next) {
     const plantaId = req.params.planta_id
     const doencaId = req.params.doenca_id
 
     try {
-      const doenca = await plantaService.deleteDoenca(doencaId, plantaId)
-      if (doenca == 0) {
-        return res.status(404).send()
-      }
+      await plantaService.deleteDoenca(doencaId, plantaId)
       return res.status(200).send()
     } catch (error) {
-      return res.status(500).json(error.message)
+      next(error)
     }
   }
 
-  static async findById (req, res) {
+  static async findById (req, res, next) {
+    const { id } = req.params
     try {
-      const { id } = req.params
-
       const planta = await plantaService.findById(id)
-      if (!planta) {
-        return res.status(404).send()
-      }
       return res.status(200).send(planta)
     } catch (error) {
-      return res.status(500).json(error.message)
+      next(error)
     }
   }
 }

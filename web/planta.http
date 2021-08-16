@@ -15,14 +15,14 @@ Content-Type: application/json
 Accept: application/json
 
 {
-   "nome": "Milho3",
+   "nome": "a",
    "especie": "True",
    "tecnicas_plantio": "Semeadura",
    "infos_por_estacao": "Verão",
    "cor_folhas": "Verde",
    "num_frutos_colhidos": 10,
    "qtd_diaria_agua": 2.5,
-   "qtd_media_sementes": 40,
+   "qtd_media_sementes": 40.5,
    "nivel_incidencia_solar": 5.5,
    "plantacao_id": "6b44ae84-fd5b-4c24-8c6b-fc7bfe4aaf28"
 }
