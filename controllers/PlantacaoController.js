@@ -10,7 +10,9 @@ class PlantacaoController {
   // Lembrar de dar console nos erros
   static async findAll (req, res, next) {
     try {
-      const plantacoes = await plantacaoService.findAll()
+      const size = req.query.size
+      const page = req.query.page
+      const plantacoes = await plantacaoService.findAll(size, page)
       return res.status(200).send(plantacoes)
     } catch (error) {
       next(error)

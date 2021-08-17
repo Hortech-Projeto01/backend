@@ -35,8 +35,8 @@ Accept: application/json
 {
     "nivel_ph": 7.0,
     "tipo_solo": "TIPOA",
-    "temperatura": 39.9
-    // "tipo_vaso": "TIPOB"
+    "temperatura": 39.9,
+    "tipo_vaso": "TIPOB"
 }
 ###
 // Puts
@@ -58,7 +58,7 @@ Accept: application/json
 
 ###
 //FindAll
-GET {{url}}/solos HTTP/1.1
+GET {{url}}/solos?size=2&page=3 HTTP/1.1
 Accept: application/json
 ###
 GET {{url}}/solos/{{id}} HTTP/1.1

@@ -1,7 +1,7 @@
 @url = http://127.0.0.1:3001
-@id=b9b924d3-4977-4b2e-8d11-2d041d232a48
-@planta_id=0498a289-fa88-4d7e-9c19-6519c620300b
-@solo_id=36cbedd5-3d47-4e8f-b052-a95dae4a8b58
+@id=ab28e363-7546-4129-9611-c46e63990ee4
+@planta_id=9064ec25-105d-4c45-86ef-8c3ecd764884
+@solo_id=70be8f4b-b678-4fed-8e5a-45acbf74e724
 
 //Gets
 GET {{url}}/plantacoes/{{id}} HTTP/1.1
@@ -22,7 +22,7 @@ Content-Type: application/json
 Accept: application/json
 
 {
-   "solo_id": "{{solo_id}}"
+   "solo_id": ""
 }
 ###
 DELETE {{url}}/plantacoes/{{id}} HTTP/1.1

@@ -27,7 +27,9 @@ class AgendaController {
 
   static async findAll (req, res) {
     try {
-      const agendas = await agendaService.findAll()
+      const size = req.query.size
+      const page = req.query.page
+      const agendas = await agendaService.findAll(size, page)
       // eslint-disable-next-line eqeqeq
       if (agendas == 0) {
         return res.status(404).send()

@@ -3,17 +3,17 @@ const validator = require('validator')
 const { InvalidInput } = require('../../errors')
 
 const schema = {
-    nome: value => validator.isAlpha(value,'pt-BR', {ignore: ' '}), 
-    transmissao: value => validator.isAlpha(value,'pt-BR', {ignore: ' '}),
-    prevencao: value => validator.isAlpha(value,'pt-BR', {ignore: ' '}),
-    tratamento: value => validator.isAlpha(value,'pt-BR', {ignore: ' '})
+  nome: value => validator.isAlpha(value, 'pt-BR', { ignore: ' ' }),
+  transmissao: value => validator.isAlpha(value, 'pt-BR', { ignore: ' ' }),
+  prevencao: value => validator.isAlpha(value, 'pt-BR', { ignore: ' ' }),
+  tratamento: value => validator.isAlpha(value, 'pt-BR', { ignore: ' ' })
 }
 
 const matchSchema = (object) => Object
   .keys(schema)
   .filter(key => {
-    if (!object[key]) {
-      return false
+    if (!object[key] && key == 'nome') {
+      return true
     }
     return !schema[key](object[key] + '')
   })
@@ -22,10 +22,10 @@ const matchSchema = (object) => Object
 const validate = (object) => {
   const errors = matchSchema(object)
   const examples = {
-    nome: "Mofo Cinzento",
-    transmissao: "ar",
-    prevencao: "controlar a temperatura e umidade",
-    tratamento: "usar adubo especifico"
+    nome: 'Mofo Cinzento',
+    transmissao: 'ar',
+    prevencao: 'controlar a temperatura e umidade',
+    tratamento: 'usar adubo especifico'
   }
 
   const objError = {}
