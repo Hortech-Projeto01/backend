@@ -10,30 +10,26 @@ class PlantaService extends Services {
 
   async getDoencas (idPlanta) {
     const planta = await super.findById(idPlanta)
-    if (!planta) {
-      return 0
-    }
     return await planta.getDoencas()
   }
 
   async addDoenca (idPlanta, idDoenca) {
+    await this.doencas.findById(idDoenca)
     const planta = await super.findById(idPlanta)
     return await planta.addDoenca(idDoenca)
   }
 
   async getDoenca (idDoenca, idPlanta) {
     const planta = await super.findById(idPlanta)
-    if (!planta) {
-      return null
+    const doenca = await this.doencas.findById(idDoenca)
+    if (!planta.doenca(doenca.id)) {
+      throw new NotFound('PlantaDoenca')
     }
-    return await this.doencas.findById(idDoenca)
+    return doenca
   }
 
   async deleteDoenca (idDoenca, idPlanta) {
     const planta = await super.findById(idPlanta)
-    if (!planta) {
-      return 0
-    }
     return await planta.removeDoenca(idDoenca)
   }
 

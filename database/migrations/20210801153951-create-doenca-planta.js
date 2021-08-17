@@ -5,12 +5,14 @@ module.exports = {
       planta_id: {
         type: Sequelize.UUID,
         primaryKey: true,
-        allowNull: false
+        allowNull: false,
+        references: { model: 'Planta', key: 'id' }
       },
       doenca_id: {
         type: Sequelize.UUID,
         primaryKey: true,
-        allowNull: false
+        allowNull: false,
+        references: { model: 'Doenca', key: 'id' }
       },
       createdAt: {
         allowNull: false,

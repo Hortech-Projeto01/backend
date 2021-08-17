@@ -3,14 +3,14 @@ const validator = require('validator')
 const { InvalidInput } = require('../../errors')
 
 const schema = {
-  solo_id: value => validator.isUUID(value, [4])
+  solo_id: value => !validator.isEmpty(value) && validator.isUUID(value, [4])
 }
 
 const matchSchema = (object) => Object
   .keys(schema)
   .filter(key => {
-    if (!object[key] && key != 'solo_id') {
-      return false
+    if (!object[key] && key == 'solo_id') {
+      return true
     }
     return !schema[key](object[key] + '')
   })

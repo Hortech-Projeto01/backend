@@ -12,12 +12,14 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate (models) {
       Planta.belongsToMany(models.Doenca, {
+        foreignKeyConstraint: true,
         through: models.DoencaPlanta,
         as: 'doencas',
         foreignKey: 'planta_id',
         otherKey: 'doenca_id'
       })
       Planta.belongsToMany(models.Plantacao, {
+        foreignKeyConstraint: true,
         through: models.PlantacaoPlanta,
         as: 'plantacoes',
         foreignKey: 'planta_id',

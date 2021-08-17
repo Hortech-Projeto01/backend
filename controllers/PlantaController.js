@@ -1,7 +1,6 @@
 /* eslint-disable eqeqeq */
-const { PlantaService, DoencaService } = require('../services')
+const { PlantaService } = require('../services')
 const plantaService = new PlantaService()
-const doencaService = new DoencaService()
 
 class PlantaController {
   // TODO: create, findall e update -> @Vitor Done
@@ -33,7 +32,9 @@ class PlantaController {
 
   static async findAll (req, res, next) {
     try {
-      const plantas = await plantaService.findAll()
+      const size = req.query.size
+      const page = req.query.page
+      const plantas = await plantaService.findAll(size, page)
       return res.status(200).send(plantas)
     } catch (error) {
       next(error)
@@ -57,7 +58,6 @@ class PlantaController {
     const doencaId = req.params.doenca_id
 
     try {
-      await doencaService.findById(doencaId)
       await plantaService.addDoenca(plantaId, doencaId)
       return res.status(200).send()
     } catch (error) {

@@ -5,7 +5,9 @@ const soloService = new SoloService()
 class SoloController {
   static async findAll (req, res, next) {
     try {
-      const solos = await soloService.findAll()
+      const size = req.query.size
+      const page = req.query.page
+      const solos = await soloService.findAll(size, page)
       return res.status(200).send(solos)
     } catch (error) {
       next(error)

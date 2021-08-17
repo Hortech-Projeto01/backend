@@ -10,8 +10,19 @@ class Services {
     this.nomeModelo = nomeModelo
   }
 
-  async findAll () {
-    return database[this.nomeModelo].findAll()
+  async findAll (size = 5, page = 0) {
+    const parsedSize = parseInt(size)
+    const parsedPage = parseInt(page)
+    if (isNaN(parsedSize) || isNaN(parsedPage)) {
+      throw new NotFound(this.nomeModelo)
+    }
+    const allObjects = await database[this.nomeModelo].findAndCountAll({
+      limit: parsedSize,
+      offset: parsedPage * parsedSize,
+      order: [['updatedAt', 'DESC']]
+    })
+    allObjects.currentPage = parsedPage + 1
+    return allObjects
   }
 
   async findById (id) {

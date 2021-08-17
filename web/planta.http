@@ -1,8 +1,7 @@
 @url = http://127.0.0.1:3001
-@id=0498a289-fa88-4d7e-9c19-6519c620300b
 @doenca_id=28db822a-9f57-4572-b23a-e10ec3cf9c82
 
-@id = 46094440-53fc-4089-ad4a-2f0cb89d6589
+@id=9064ec25-105d-4c45-86ef-8c3ecd764884
 
 //Gets
 GET {{url}}/plantas HTTP/1.1
@@ -15,16 +14,15 @@ Content-Type: application/json
 Accept: application/json
 
 {
-   "nome": "a",
-   "especie": "True",
+   "nome": "plantinha",
+   "especie": "",
    "tecnicas_plantio": "Semeadura",
    "infos_por_estacao": "Verão",
    "cor_folhas": "Verde",
    "num_frutos_colhidos": 10,
    "qtd_diaria_agua": 2.5,
-   "qtd_media_sementes": 40.5,
-   "nivel_incidencia_solar": 5.5,
-   "plantacao_id": "6b44ae84-fd5b-4c24-8c6b-fc7bfe4aaf28"
+   "qtd_media_sementes": 30,
+   "nivel_incidencia_solar": 5.5
 }
 
 ###

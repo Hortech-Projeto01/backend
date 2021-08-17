@@ -47,8 +47,6 @@ class PlantacaoService extends Services {
   async update (data, id, idSolo, transacao = {}) {
     plantacaoValidator(data)
 
-    await this.solo.findById(idSolo)
-
     const count = await database[this.nomeModelo].update(data, { where: { id } }, transacao)
 
     // eslint-disable-next-line eqeqeq
@@ -59,10 +57,13 @@ class PlantacaoService extends Services {
   }
 
   async getPlanta (idPlanta, idPlantacao) {
-    await this.plantas.findById(idPlanta)
     const plantacao = await super.findById(idPlantacao)
     if (!plantacao) {
       throw new NotFound(this.nomeModelo)
+    }
+    const planta = await this.plantas.findById(idPlanta)
+    if (!plantacao.hasPlanta(planta.id)) {
+      throw new NotFound('PlantacaoPlanta')
     }
     return await this.plantas.findById(idPlanta)
   }

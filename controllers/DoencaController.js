@@ -8,10 +8,12 @@ class DoencaController {
 
   static async findAll (req, res, next) {
     try {
-      const doencas = await doencaService.findAll()
+      const size = req.query.size
+      const page = req.query.page
+      const doencas = await doencaService.findAll(size, page)
       return res.status(200).send(doencas)
     } catch (error) {
-      next(error) 
+      next(error)
     }
   }
 
