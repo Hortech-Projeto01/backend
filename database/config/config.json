@@ -11,7 +11,8 @@
     "password": null,
     "database": "database_test",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "sqlite",
+    "storage": "./__tests__/database.sqlite"
   },
   "production": {
     "username": "root",
