@@ -62,7 +62,7 @@ class PlantacaoService extends Services {
       throw new NotFound(this.nomeModelo)
     }
     const planta = await this.plantas.findById(idPlanta)
-    if (!plantacao.hasPlanta(planta.id)) {
+    if (!await plantacao.hasPlanta(planta)) {
       throw new NotFound('PlantacaoPlanta')
     }
     return await this.plantas.findById(idPlanta)

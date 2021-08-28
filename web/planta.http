@@ -1,7 +1,7 @@
 @url = http://127.0.0.1:3001
-@doenca_id=28db822a-9f57-4572-b23a-e10ec3cf9c82
+@doenca_id=6641e112-3dbd-4a14-be00-0324644a0de9
 
-@id=9064ec25-105d-4c45-86ef-8c3ecd764884
+@id=10780a2b-f2a8-421f-84f0-42f2b094c462
 
 //Gets
 GET {{url}}/plantas HTTP/1.1
@@ -15,7 +15,7 @@ Accept: application/json
 
 {
    "nome": "plantinha",
-   "especie": "",
+   "especie": "espec",
    "tecnicas_plantio": "Semeadura",
    "infos_por_estacao": "Verão",
    "cor_folhas": "Verde",

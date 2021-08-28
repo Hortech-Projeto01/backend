@@ -22,7 +22,7 @@ class PlantaService extends Services {
   async getDoenca (idDoenca, idPlanta) {
     const planta = await super.findById(idPlanta)
     const doenca = await this.doencas.findById(idDoenca)
-    if (!planta.doenca(doenca.id)) {
+    if (!await planta.hasDoenca(doenca)) {
       throw new NotFound('PlantaDoenca')
     }
     return doenca

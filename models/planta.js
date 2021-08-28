@@ -46,6 +46,5 @@ module.exports = (sequelize, DataTypes) => {
     // eslint-disable-next-line no-return-assign
     return planta.id = uuid.v4()
   })
-
   return Planta
 }
