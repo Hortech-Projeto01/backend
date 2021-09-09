@@ -1,27 +1,28 @@
 'use strict'
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Plantacao', {
+    await queryInterface.createTable('Usuario', {
       id: {
         allowNull: false,
         primaryKey: true,
         type: Sequelize.UUID
       },
-      solo_id: {
+      email: {
+        type: Sequelize.STRING,
         allowNull: false,
-        type: Sequelize.UUID,
-        references: {
-          model: 'Solo',
-          key: 'id'
-        }
+        unique: true
       },
-      usuario_id: {
-        allowNull: false,
-        type: Sequelize.UUID,
-        references: {
-          model: 'Usuario',
-          key: 'id'
-        }
+      nome: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      is_admin: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false
+      },
+      senha: {
+        type: Sequelize.STRING,
+        allowNull: false
       },
       createdAt: {
         allowNull: false,
@@ -34,6 +35,6 @@ module.exports = {
     })
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Plantacao')
+    await queryInterface.dropTable('Usuario')
   }
 }

@@ -29,6 +29,9 @@ module.exports = (sequelize, DataTypes) => {
       Plantacao.belongsTo(models.Solo, {
         foreignKey: 'solo_id'
       })
+      Plantacao.belongsTo(models.Usuario, {
+        foreignKey: 'usuario_id'
+      })
     }
   };
   Plantacao.init({}, {
