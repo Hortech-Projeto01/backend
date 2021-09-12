@@ -5,9 +5,6 @@ const plantacaoService = new PlantacaoService()
 // Pra isso preciso inserir errors como middlewares
 
 class PlantacaoController {
-  // TODO: Se lembrar de depois, quando deletar
-  // uma planta, deletar a relação com a plantacao tbm
-  // Lembrar de dar console nos erros
   static async findAll (req, res, next) {
     try {
       const size = req.query.size
