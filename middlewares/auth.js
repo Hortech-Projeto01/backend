@@ -77,8 +77,8 @@ passport.use(
     {
       // env var
       clientID:
-                '177616451190-epb3ae4emf3pbipinppc158johkksv1n.apps.googleusercontent.com',
-      clientSecret: 'g9UssTwUd8yo8f6pAQFys_Fj',
+                '',
+      clientSecret: '',
       callbackURL: 'http://localhost:3001/auth/google/callback',
       passReqToCallback: true
     },
