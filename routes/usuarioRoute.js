@@ -8,7 +8,7 @@ const authUtil = require('../utils/validators/auth/authUtil')
 require('../middlewares/auth')
 
 router.post(
-  '/signup',
+  '/auth/signup',
   passport.authenticate('signup', { session: false }),
   async (req, res, next) => {
     return res
@@ -17,7 +17,7 @@ router.post(
   }
 )
 
-router.post('/login', async (req, res, next) => {
+router.post('/auth/login', async (req, res, next) => {
   passport.authenticate('login', async (err, user, info) => {
     try {
       if (err || !user) {
