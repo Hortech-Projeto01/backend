@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "pretest": "NODE_ENV=test npx sequelize db:migrate",
+    "test": "NODE_ENV=test jest",
+    "posttest": "NODE_ENV=test npx sequelize db:migrate:undo:all",
     "dev": "nodemon -L --inspect ./index.js",
     "start": "node ./index.js"
   },
