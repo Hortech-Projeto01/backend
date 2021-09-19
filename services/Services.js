@@ -1,9 +1,7 @@
 /* eslint-disable eqeqeq */
 const NotFound = require('../errors/NotFound')
 const database = require('../models')
-const { soloValidator } = require('../utils/validators')
-const { doencaValidator } = require('../utils/validators')
-const { plantaValidator } = require('../utils/validators')
+const { soloValidator, usuarioValidator, plantaValidator, doencaValidator } = require('../utils/validators')
 
 class Services {
   constructor (nomeModelo) {
@@ -48,6 +46,9 @@ class Services {
       case 'Planta':
         plantaValidator(data)
         break
+      case 'Usuario':
+        usuarioValidator(data)
+        break
       default:
         break
     }
@@ -65,6 +66,9 @@ class Services {
         break
       case 'Planta':
         plantaValidator(data)
+        break
+      case 'Usuario':
+        usuarioValidator(data)
         break
       default:
         break

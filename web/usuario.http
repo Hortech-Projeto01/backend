@@ -1,7 +1,7 @@
 @url = http://127.0.0.1:3001
 @id = 2bcced3d-7d9f-4de5-88e3-7a57f0c1b039
 @senha = $2b$10$FeY4k68nkS8KKCIO4vAqFuq3CAXVaCJsQKNZ.Wj5PMAK.nZwlrRU.
-@token=Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiN2IyODc5MTEtYWViNC00NmMyLTgzY2UtOGI2YTc2NjNkYTVmIiwiZW1haWwiOiJsb3d2YTk2QGdtYWlsLmNvbSIsImlzX2FkbWluIjp0cnVlfSwiaWF0IjoxNjMxNDY5ODAzLCJleHAiOjE2MzE0NzAxMDN9.XkpLvJDv-pjsc2laKKJ4hgY1eydsJnZ3zMLqOhbM3mg
+@token=Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiYjFiY2FhMTAtNGIwZC00OWFhLWJmOGMtZTVhNDM1ZmJmNDcwIiwiZW1haWwiOiJ2aWN0b3J2aXJnb2xpbm9AZ21haWwuY29tIiwiaXNfYWRtaW4iOnRydWV9LCJpYXQiOjE2MzIwODM1OTMsImV4cCI6MTYzMjA4Mzg5M30.7X06gSwohcDohgOldhBUdIozCXcVSdXK-HWBJq-O5UA
 
 ###
 //Posts
@@ -10,9 +10,10 @@ Content-Type: application/json
 Accept: application/json
 
 {
-    "email": "docinho@hotmail.com",
+    "email": "victor@hotmail.com",
     "nome": "Docinho",
-    "senha": "something"
+    "is_admin": false,
+    "senha": "Joao"
 }
 ###
 POST {{url}}/login HTTP/1.1

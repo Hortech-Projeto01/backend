@@ -3,7 +3,7 @@
 
 @id=10780a2b-f2a8-421f-84f0-42f2b094c462
 
-@token= Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNDU1ZTdhZTUtZDlkNS00MjEwLWI0NjUtYmI5NDcxYmYyNWJhIiwiZW1haWwiOiJ2aWN0b3J2aXJnb2xpbm9AZ21haWwuY29tIiwiaXNfYWRtaW4iOnRydWV9LCJpYXQiOjE2MzE3MTgwMzAsImV4cCI6MTYzMTcxODMzMH0.nC4xTeDUIBJMdqQujG_NE9YTSGRJa9dGvnUeoj-yt9U
+@token=Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiYjFiY2FhMTAtNGIwZC00OWFhLWJmOGMtZTVhNDM1ZmJmNDcwIiwiZW1haWwiOiJ2aWN0b3J2aXJnb2xpbm9AZ21haWwuY29tIiwiaXNfYWRtaW4iOnRydWV9LCJpYXQiOjE2MzIwODM1OTMsImV4cCI6MTYzMjA4Mzg5M30.7X06gSwohcDohgOldhBUdIozCXcVSdXK-HWBJq-O5UA
 
 //Gets
 GET {{url}}/plantas HTTP/1.1
@@ -15,6 +15,7 @@ Accept: application/json
 POST {{url}}/plantas
 Content-Type: application/json
 Accept: application/json
+Authorization: {{token}}
 
 {
    "nome": "plantinha",

@@ -76,8 +76,7 @@ passport.use(
   new GoogleStrategy(
     {
       // env var
-      clientID:
-                '',
+      clientID: '',
       clientSecret: '',
       callbackURL: 'http://localhost:3001/auth/google/callback',
       passReqToCallback: true

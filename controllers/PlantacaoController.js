@@ -31,7 +31,7 @@ class PlantacaoController {
   static async insert (req, res, next) {
     const plantacao = req.body
     try {
-      const newPlantacao = await plantacaoService.create(plantacao, plantacao.solo_id)
+      const newPlantacao = await plantacaoService.create(plantacao, plantacao.solo_id, plantacao.usuario_id)
       return res.status(201).send(newPlantacao)
     } catch (error) {
       next(error)

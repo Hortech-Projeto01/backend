@@ -26,5 +26,6 @@ Alguns comandos úteis do sequelize:
 * Para migrar as migrações `npx sequelize-cli db:migrate` ele irá criar as referidas tabelas no banco.
 * Para criar seeds (dados no banco de dados) pelo sequelize `npx sequelize-cli seed:generate --name demo-pessoa`
 * Para inserir os seeds `npx sequelize-cli db:seed:all`
+* Para rodar o enviroment test `npx sequelize db:migrate --env test`
 
 [Documentação](https://sequelize.org/master/manual/)

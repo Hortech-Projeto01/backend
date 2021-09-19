@@ -1,7 +1,8 @@
 const { Router } = require('express')
+const UsuarioController = require('../controllers/UsuarioController')
+
 const passport = require('passport')
 const router = Router()
-// const UsuarioController = require('../controllers/UsuarioController')
 const jwt = require('jsonwebtoken')
 const roles = require('../middlewares/roles')
 const authUtil = require('../utils/validators/auth/authUtil')
@@ -15,6 +16,10 @@ router.post(
       .status(200)
       .send({ message: 'Signup Successful', user: req.user })
   }
+)
+// Criei essa rota Só para testar o plantacao.test e o validator
+router.post('/signup',
+  UsuarioController.signup
 )
 
 router.post('/auth/login', async (req, res, next) => {

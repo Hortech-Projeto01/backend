@@ -9,6 +9,7 @@ class PlantacaoService extends Services {
     this.plantas = new Services('Planta')
     this.solo = new Services('Solo')
     this.agenda = new Services('Agenda')
+    this.usuarios = new Services('Usuario')
   }
 
   async addPlanta (idPlanta, idPlantacao) {
@@ -28,10 +29,11 @@ class PlantacaoService extends Services {
     return await plantacao.getPlantas()
   }
 
-  async create (plantacao, soloId) {
+  async create (plantacao, soloId, usuarioId) {
     plantacaoValidator(plantacao)
 
     await this.solo.findById(soloId)
+    await this.usuarios.findById(usuarioId)
 
     const newPlantacao = await super.create(plantacao)
 
@@ -44,7 +46,7 @@ class PlantacaoService extends Services {
     return newPlantacao
   }
 
-  async update (data, id, idSolo, transacao = {}) {
+  async update (data, id, transacao = {}) {
     plantacaoValidator(data)
 
     const count = await database[this.nomeModelo].update(data, { where: { id } }, transacao)
