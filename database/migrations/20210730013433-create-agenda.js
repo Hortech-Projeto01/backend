@@ -8,7 +8,7 @@ module.exports = {
         type: Sequelize.UUID
       },
       horario: {
-        type: Sequelize.TIME
+        type: Sequelize.JSONB
       },
       plantacao_id: {
         allowNull: false,

@@ -1,38 +1,60 @@
 @url = http://127.0.0.1:3001
-@id=ab28e363-7546-4129-9611-c46e63990ee4
-@planta_id=9064ec25-105d-4c45-86ef-8c3ecd764884
-@solo_id=70be8f4b-b678-4fed-8e5a-45acbf74e724
+@id=eb857630-b4ff-4b8f-83e7-e322d189a38d
+@planta_id=5a4e7d69-b43d-4458-a1f2-c38a70e6efc9
+@solo_id=96339301-1e24-4f8c-ac8f-9e31ba174eb0
+@user_id= ffe35b7d-74cf-4228-8edb-75e53baecb25
+@doenca_id=4639474e-c3b6-4485-b6cc-56083140717e
+@token = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiMzQ0OWNlZTUtYTFhZi00ZTUyLWJiNzEtMzE5MDdmOTU0MTk4IiwiZW1haWwiOiJsb3d2YTk2QGdtYWlsLmNvbSIsImlzX2FkbWluIjpmYWxzZX0sImlhdCI6MTYzMjA4ODI3MCwiZXhwIjoxNjMyMDg4NTcwfQ.I_XS9WzpvnT0xqkI0_h71ppIeTS6FbvDj6FPAr33hcA
 
-//Gets
-GET {{url}}/plantacoes/{{id}} HTTP/1.1
-Accept: application/json
-###
-GET {{url}}/plantacoes/plantas/{{id}} HTTP/1.1
-Accept: application/json
-###
-GET {{url}}/plantacoes/plantas/{{id}}/{{planta_id}} HTTP/1.1
-Accept: application/json
-###
-GET {{url}}/plantacoes/solos/{{id}}/{{solo_id}} HTTP/1.1
-Accept: application/json
-###
-//Posts
-POST {{url}}/plantacoes HTTP/1.1
+// O user pega uma de suas plantacoes
+GET {{url}}/user/plantacoes/{{id}} HTTP/1.1
 Content-Type: application/json
 Accept: application/json
+Authorization: {{token}}
+
+// O user pega todas as plantas de uma plantacao
+###
+GET {{url}}/user/plantacoes/plantas/{{id}} HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+Authorization: {{token}}
+
+// O user pega uma planta de uma plantacao
+###
+GET {{url}}/user/plantacoes/plantas/{{id}}/{{planta_id}} HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+Authorization: {{token}}
+
+// O user pega o solo da sua plantação
+###
+GET {{url}}/user/plantacoes/solos/{{id}}/{{solo_id}} HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+Authorization: {{token}}
+
+// O user insere uma plantação nova
+###
+POST {{url}}/user/plantacoes/ HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+Authorization: {{token}}
 
 {
-   "solo_id": ""
+   "solo_id": "{{solo_id}}"
 }
+// O user deleta uma plantacao sua
 ###
-DELETE {{url}}/plantacoes/{{id}} HTTP/1.1
+DELETE {{url}}/user/plantacoes/{{id}} HTTP/1.1
 Accept: application/json
 ###
-// DELETES
-DELETE {{url}}/plantacoes/plantas/{{id}}/{{planta_id}} HTTP/1.1
+// O user deleta uma planta da sua plantacao
+DELETE {{url}}/user/plantacoes/plantas/{{id}}/{{planta_id}} HTTP/1.1
+Content-Type: application/json
 Accept: application/json
+Authorization: {{token}}
 
-// PUTS
+// O user altera sua plantacao
 ###
 PUT {{url}}/plantacoes/{{id}} HTTP/1.1
 Content-Type: application/json
@@ -41,12 +63,45 @@ Accept: application/json
 {
    "solo_id": "b49c1bb8-fea8-4070-b589-dc00c0aa40b0" 
 }
+
+// O user adiciona uma planta a sua plantacao
 ###
-PUT {{url}}/plantacoes/{{id}}/{{planta_id}} HTTP/1.1
+PUT {{url}}/user/plantacoes/{{id}}/{{planta_id}} HTTP/1.1
 Content-Type: application/json
 Accept: application/json
+Authorization: {{token}}
 
+// O user lista todas as suas plantacoes
 ###
-//FindAll
-GET {{url}}/plantacoes HTTP/1.1
+GET {{url}}/user/plantacoes HTTP/1.1
+Content-Type: application/json
 Accept: application/json
+Authorization: {{token}}
+
+// O user encontra uma doença em uma planta sua
+###
+GET {{url}}/user/plantacoes/{{id}}/planta/{{planta_id}}/doenca/{{doenca_id}} HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+Authorization: {{token}}
+
+// O user insere uma doença em uma planta sua
+###
+PUT {{url}}/user/plantacoes/{{id}}/planta/{{planta_id}}/doenca/{{doenca_id}} HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+Authorization: {{token}}
+
+// O user deleta uma doença de uma planta sua
+###
+DELETE {{url}}/user/plantacoes/{{id}}/planta/{{planta_id}}/doenca/{{doenca_id}} HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+Authorization: {{token}}
+
+// O user pega todas as doenças de uma plantação sua
+###
+GET {{url}}/user/plantacoes/{{id}}/doencas HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+Authorization: {{token}}

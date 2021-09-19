@@ -1,6 +1,7 @@
 @url = http://127.0.0.1:3001
-@id = 4ba2c700-5c5c-473d-b0c8-aff79e36c4d4
-// 36cbedd5-3d47-4e8f-b052-a95dae4a8b58
+@id = 96339301-1e24-4f8c-ac8f-9e31ba174eb0
+
+@token = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiMzQ0OWNlZTUtYTFhZi00ZTUyLWJiNzEtMzE5MDdmOTU0MTk4IiwiZW1haWwiOiJsb3d2YTk2QGdtYWlsLmNvbSIsImlzX2FkbWluIjp0cnVlfSwiaWF0IjoxNjMyMDg3NTAxLCJleHAiOjE2MzIwODc4MDF9.b2S0lIF1WVO9-MM7iT6s2ETd3bh0q8-TZB3fzogtgKE
 
 //Gets
 
@@ -9,6 +10,7 @@
 POST {{url}}/solos HTTP/1.1
 Content-Type: application/json
 Accept: application/json
+Authorization: {{token}}
 
 {
     "nivel_ph": 6.0,
@@ -58,8 +60,10 @@ Accept: application/json
 
 ###
 //FindAll
-GET {{url}}/solos?size=2&page=3 HTTP/1.1
+GET {{url}}/solos?size=2&page=0 HTTP/1.1
+Content-Type: application/json
 Accept: application/json
+Authorization: {{token}}
 ###
 GET {{url}}/solos/{{id}} HTTP/1.1
 Accept: application/json

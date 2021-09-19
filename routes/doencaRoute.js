@@ -7,7 +7,7 @@ const roles = require('../middlewares/roles')
 require('../middlewares/auth')
 
 router.get('/doencas/:id',
-  [passport.authenticate('jwt', { session: false }), roles],
+  [passport.authenticate('jwt', { session: false })],
   DoencaController.findById)
 router.delete('/doencas/:id',
   [passport.authenticate('jwt', { session: false }), roles],
@@ -19,7 +19,7 @@ router.post('/doencas',
   [passport.authenticate('jwt', { session: false }), roles],
   DoencaController.insert)
 router.get('/doencas',
-  [passport.authenticate('jwt', { session: false }), roles],
+  [passport.authenticate('jwt', { session: false })],
   DoencaController.findAll)
 router.put('/doencas/:id',
   [passport.authenticate('jwt', { session: false }), roles],

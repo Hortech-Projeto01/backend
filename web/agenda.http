@@ -1,8 +1,51 @@
 @url = http://127.0.0.1:3001
-@id = 1e3dec7f-5779-4e69-a743-b99665c80ad4
+@id = ac0fc37a-7a41-4680-9f9c-ac44f3300859
+@plantacao_id = eb857630-b4ff-4b8f-83e7-e322d189a38d
+@irrigation_name = primeira
+@day = 0
+@token = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiMzQ0OWNlZTUtYTFhZi00ZTUyLWJiNzEtMzE5MDdmOTU0MTk4IiwiZW1haWwiOiJsb3d2YTk2QGdtYWlsLmNvbSIsImlzX2FkbWluIjpmYWxzZX0sImlhdCI6MTYzMjA4ODk1NCwiZXhwIjoxNjMyMDg5MjU0fQ.LAjE3hSvF8ytSeZKkvtO65rkesA_ZtMNja7JvCsDAHo
 
 //Gets
 
 GET {{url}}/agendas/{{id}} HTTP/1.1
 Content-Type: application/json
 Accept: application/json
+//lembrar de listar as agendas de um cliente
+###
+GET {{url}}/agendas/ HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+Authorization: {{token}}
+
+// O user lista todas as irrigações de um dia
+###
+GET {{url}}/user/agendas/{{plantacao_id}}&{{day}} HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+Authorization: {{token}}
+
+// O user pega uma irrigação sua pelo nome/id
+###
+GET {{url}}/user/agendas/{{plantacao_id}}&{{day}}&{{irrigation_name}} HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+Authorization: {{token}}
+
+// O user pega a data de uma irrigação sua
+###
+GET {{url}}/user/agendas/date/{{plantacao_id}}&{{day}}&{{irrigation_name}} HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+Authorization: {{token}}
+
+// O user já irrigou aquela irrigação e deseja informar a agenda que nao precisa alerta lo
+// naquele dia
+###
+PUT {{url}}/user/agendas/irrigated/{{plantacao_id}}&{{day}}&{{irrigation_name}} HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+Authorization: {{token}}
+
+{
+    "irrigated": true
+}

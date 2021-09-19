@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Agenda.init({
-    horario: DataTypes.TIME
+    horario: DataTypes.JSONB
   }, {
     sequelize,
     modelName: 'Agenda',

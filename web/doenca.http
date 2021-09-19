@@ -1,5 +1,6 @@
 @url = http://127.0.0.1:3001
-@id=628ed1b4-ee43-4ea9-ab20-356c962f26fc
+@id=cea7dafa-a924-4cf6-9d3f-9a2a8a842922
+@token=Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiMzQ0OWNlZTUtYTFhZi00ZTUyLWJiNzEtMzE5MDdmOTU0MTk4IiwiZW1haWwiOiJsb3d2YTk2QGdtYWlsLmNvbSIsImlzX2FkbWluIjp0cnVlfSwiaWF0IjoxNjMyMDg3NTAxLCJleHAiOjE2MzIwODc4MDF9.b2S0lIF1WVO9-MM7iT6s2ETd3bh0q8-TZB3fzogtgKE
 
 //Gets
 ###
@@ -14,9 +15,10 @@ Accept: application/json
 POST {{url}}/doencas HTTP/1.1
 Content-Type: application/json
 Accept: application/json
+Authorization: {{token}}
 
 {
-    "nome": "aabbcc",
+    "nome": "mofo",
     "transmissao": "solo",
     "prevencao": "asdf",
     "tratamento": "agrotoxico"

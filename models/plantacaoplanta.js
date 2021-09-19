@@ -2,6 +2,7 @@
 const {
   Model
 } = require('sequelize')
+
 module.exports = (sequelize, DataTypes) => {
   class PlantacaoPlanta extends Model {
     /**
@@ -15,7 +16,9 @@ module.exports = (sequelize, DataTypes) => {
   };
   PlantacaoPlanta.init({
     planta_id: DataTypes.UUID,
-    plantacao_id: DataTypes.UUID
+    plantacao_id: DataTypes.UUID,
+    doenca_id: DataTypes.UUID,
+    doenca_createdAt: DataTypes.DATE
   }, {
     sequelize,
     modelName: 'PlantacaoPlanta'

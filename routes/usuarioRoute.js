@@ -5,6 +5,7 @@ const router = Router()
 const jwt = require('jsonwebtoken')
 const roles = require('../middlewares/roles')
 const authUtil = require('../utils/validators/auth/authUtil')
+const { InvalidCredentials } = require('../errors')
 require('../middlewares/auth')
 
 router.post(
@@ -22,7 +23,7 @@ router.post('/auth/login', async (req, res, next) => {
     try {
       if (err || !user) {
         // 401 (Not Authorized)
-        const error = new Error(JSON.stringify(info))
+        const error = new InvalidCredentials(JSON.stringify(info))
 
         return next(error)
       }
@@ -37,8 +38,8 @@ router.post('/auth/login', async (req, res, next) => {
           is_admin: user.is_admin
         }
         // env var
-        const token = jwt.sign({ user: body }, 'Any', {
-          expiresIn: '5m'
+        const token = jwt.sign({ user: body }, process.env.JWT_SECRET, {
+          expiresIn: process.env.JWT_EXPIRATION
         })
         return res.status(200).json({ token })
       })
@@ -46,6 +47,11 @@ router.post('/auth/login', async (req, res, next) => {
       return next(error)
     }
   })(req, res, next)
+})
+
+router.get('/logout', (req, res) => {
+  req.logout()
+  res.redirect('/')
 })
 
 router.get(

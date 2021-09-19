@@ -17,7 +17,7 @@ passport.use(
     },
     async (req, username, password, next) => {
       // lembrar de mudar para false
-      req.body.is_admin = true
+      req.body.is_admin = false
       try {
         const usuario = await db.Usuario.create(req.body)
         return next(null, usuario)
@@ -58,8 +58,7 @@ passport.use(
 passport.use(
   new JWTstr(
     {
-      // env var
-      secretOrKey: 'Any',
+      secretOrKey: process.env.JWT_SECRET,
       jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken()
     },
     async (token, next) => {
@@ -76,10 +75,9 @@ passport.use(
   new GoogleStrategy(
     {
       // env var
-      clientID:
-                '',
-      clientSecret: '',
-      callbackURL: 'http://localhost:3001/auth/google/callback',
+      clientID: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      callbackURL: `http://${process.env.GOOGLE_CALLBACK_HOST}/auth/google/callback`,
       passReqToCallback: true
     },
     async function (request, accessToken, refreshToken, profile, next) {
@@ -96,7 +94,7 @@ passport.use(
           senha: profile.id,
           googleId: profile.id,
           email: email,
-          is_admin: true,
+          is_admin: false,
           nome: profile.name.givenName + ' ' + profile.name.familyName
         }
 

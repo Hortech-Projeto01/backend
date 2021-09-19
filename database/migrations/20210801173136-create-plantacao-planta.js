@@ -14,6 +14,14 @@ module.exports = {
         type: Sequelize.UUID,
         references: { model: 'Plantacao', key: 'id' }
       },
+      doenca_id: {
+        allowNull: true,
+        type: Sequelize.UUID
+      },
+      doenca_createdAt: {
+        allowNull: true,
+        type: Sequelize.DATE
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

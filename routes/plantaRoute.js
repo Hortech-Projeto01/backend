@@ -7,7 +7,7 @@ const roles = require('../middlewares/roles')
 require('../middlewares/auth')
 
 router.get('/plantas',
-  [passport.authenticate('jwt', { session: false }), roles],
+  [passport.authenticate('jwt', { session: false })],
   PlantaController.findAll)
 router.post('/plantas',
   [passport.authenticate('jwt', { session: false }), roles],
@@ -31,7 +31,7 @@ router.get('/plantas/doencas/:id',
   [passport.authenticate('jwt', { session: false }), roles],
   PlantaController.getDoencasFromPlanta)
 router.get('/plantas/:id',
-  [passport.authenticate('jwt', { session: false }), roles],
+  [passport.authenticate('jwt', { session: false })],
   PlantaController.findById)
 
 module.exports = router

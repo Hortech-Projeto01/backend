@@ -1,11 +1,11 @@
 @url = http://127.0.0.1:3001
 @id = 2bcced3d-7d9f-4de5-88e3-7a57f0c1b039
 @senha = $2b$10$FeY4k68nkS8KKCIO4vAqFuq3CAXVaCJsQKNZ.Wj5PMAK.nZwlrRU.
-@token=Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiN2IyODc5MTEtYWViNC00NmMyLTgzY2UtOGI2YTc2NjNkYTVmIiwiZW1haWwiOiJsb3d2YTk2QGdtYWlsLmNvbSIsImlzX2FkbWluIjp0cnVlfSwiaWF0IjoxNjMxNDY5ODAzLCJleHAiOjE2MzE0NzAxMDN9.XkpLvJDv-pjsc2laKKJ4hgY1eydsJnZ3zMLqOhbM3mg
+@token=Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiMzQ0OWNlZTUtYTFhZi00ZTUyLWJiNzEtMzE5MDdmOTU0MTk4IiwiZW1haWwiOiJsb3d2YTk2QGdtYWlsLmNvbSIsImlzX2FkbWluIjpmYWxzZX0sImlhdCI6MTYzMjA4NzkxMywiZXhwIjoxNjMyMDg4MjEzfQ.9FyPToz5koiZf51YCICfK6hriWMz50Y5mslzlTR-WIU
 
 ###
 //Posts
-POST {{url}}/signup HTTP/1.1
+POST {{url}}/auth/signup HTTP/1.1
 Content-Type: application/json
 Accept: application/json
 
@@ -15,7 +15,7 @@ Accept: application/json
     "senha": "something"
 }
 ###
-POST {{url}}/login HTTP/1.1
+POST {{url}}/auth/login HTTP/1.1
 Content-Type: application/json
 Accept: application/json
 

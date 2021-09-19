@@ -1,4 +1,4 @@
-const { NotFound, InvalidInput } = require('../errors')
+const { NotFound, InvalidInput, InvalidCredentials } = require('../errors')
 
 const errors = (error, req, res, next) => {
   if (error instanceof NotFound) {
@@ -6,6 +6,8 @@ const errors = (error, req, res, next) => {
     return res.status(404).send({ error: error.message, id: error.idErro })
   } else if (error instanceof InvalidInput) {
     return res.status(400).send({ error: JSON.parse(error.message), id: error.idErro })
+  } else if (error instanceof InvalidCredentials) {
+    return res.status(401).send({ error: error.message, id: error.idErro })
   } else {
     console.error(error.stack)
     return res.status(500).send({ error: error.message })
