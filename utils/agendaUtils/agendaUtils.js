@@ -4,9 +4,7 @@ exports.agendaHorario = {
   0: [
     {
       name: 'primeira',
-      time: new Date().toLocaleTimeString('pt-BR', {
-        timeZone: 'America/Sao_Paulo'
-      }),
+      time: null,
       irrigated: false
     }
   ],
@@ -27,7 +25,9 @@ exports.agendaHorario = {
   3: [
     {
       name: 'primeira',
-      time: null,
+      time: new Date().toLocaleTimeString('pt-BR', {
+        timeZone: 'America/Sao_Paulo'
+      }),
       irrigated: false
     }
   ],

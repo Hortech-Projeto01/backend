@@ -16,6 +16,12 @@ router.get('/agendas/:id',
   [passport.authenticate('jwt', { session: false }), roles],
   AgendaController.findById)
 // Operacoes sobre agenda
+router.get('/user/agendas/',
+  [passport.authenticate('jwt', { session: false })],
+  AgendaController.getAgendasFromUsuario)
+router.get('/user/agendas/:plantacao_id',
+  [passport.authenticate('jwt', { session: false })],
+  AgendaController.getAgendaFromPlantacao)
 router.get('/user/agendas/:plantacao_id&:day&:name',
   [passport.authenticate('jwt', { session: false })],
   AgendaController.getOneIrrigation)

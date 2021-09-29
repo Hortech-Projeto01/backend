@@ -1,10 +1,10 @@
 @url = http://127.0.0.1:3001
-@id=eb857630-b4ff-4b8f-83e7-e322d189a38d
+@id=0c0e04ac-e48e-41e4-b0b5-4a3e218eece1
 @planta_id=5a4e7d69-b43d-4458-a1f2-c38a70e6efc9
 @solo_id=96339301-1e24-4f8c-ac8f-9e31ba174eb0
 @user_id= ffe35b7d-74cf-4228-8edb-75e53baecb25
 @doenca_id=4639474e-c3b6-4485-b6cc-56083140717e
-@token = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiMzQ0OWNlZTUtYTFhZi00ZTUyLWJiNzEtMzE5MDdmOTU0MTk4IiwiZW1haWwiOiJsb3d2YTk2QGdtYWlsLmNvbSIsImlzX2FkbWluIjpmYWxzZX0sImlhdCI6MTYzMjA4ODI3MCwiZXhwIjoxNjMyMDg4NTcwfQ.I_XS9WzpvnT0xqkI0_h71ppIeTS6FbvDj6FPAr33hcA
+@token = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiMzQ0OWNlZTUtYTFhZi00ZTUyLWJiNzEtMzE5MDdmOTU0MTk4IiwiZW1haWwiOiJsb3d2YTk2QGdtYWlsLmNvbSIsImlzX2FkbWluIjpmYWxzZX0sImlhdCI6MTYzMjkyNjI5NiwiZXhwIjoxNjMyOTI4MDk2fQ.ACF3sfqArDTfhOLIGQ4uKIiXgsaWARAqUMFD4u9Dd8U
 
 // O user pega uma de suas plantacoes
 GET {{url}}/user/plantacoes/{{id}} HTTP/1.1

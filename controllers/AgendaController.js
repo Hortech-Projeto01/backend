@@ -29,7 +29,13 @@ cron.schedule('* * * * *', async () => {
       if (irrigation.time) {
         if (currentDate > irrigation.time && !irrigation.irrigated) {
           await emailUtils.sendGridEmail(email)
-          await agendaService.changeIrrigated(plantacao.id, user.id, day, irrigation.name, true)
+          await agendaService.changeIrrigated(
+            plantacao.id,
+            user.id,
+            day,
+            irrigation.name,
+            true
+          )
         }
       }
     })
@@ -38,7 +44,7 @@ cron.schedule('* * * * *', async () => {
 
 cron.schedule('0 0 * * *', async () => {
   const listAgendas = await agendaService.findAllWithoutCount()
-  listAgendas.forEach(async agenda => {
+  listAgendas.forEach(async (agenda) => {
     const day = new Date().getDay()
     const horario = agenda.horario
     const irrigationsByDay = agendaUtils.getAllIrrigationsFromADay(
@@ -50,8 +56,14 @@ cron.schedule('0 0 * * *', async () => {
     const userServices = new Services('Usuario')
     const user = await userServices.findById(plantacao.usuario_id)
 
-    irrigationsByDay.forEach(async irrigation => {
-      await agendaService.changeIrrigated(plantacao.id, user.id, day, irrigation.name, false)
+    irrigationsByDay.forEach(async (irrigation) => {
+      await agendaService.changeIrrigated(
+        plantacao.id,
+        user.id,
+        day,
+        irrigation.name,
+        false
+      )
     })
     console.log('All irrigation statuses have been reset.')
   })
@@ -119,6 +131,29 @@ class AgendaController {
         req.params.day
       )
       return res.status(200).send(irrigations)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  static async getAgendaFromPlantacao (req, res, next) {
+    try {
+      const agenda = await agendaService.getAgendaFromPlantacao(
+        req.params.plantacao_id,
+        req.user.id
+      )
+      return res.status(200).send(agenda)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  static async getAgendasFromUsuario (req, res, next) {
+    try {
+      const agendas = await agendaService.getAllAgendasFromUsuario(
+        req.user.id
+      )
+      return res.status(200).send(agendas)
     } catch (error) {
       next(error)
     }

@@ -33,6 +33,15 @@ class PlantacaoService extends Services {
     return allObjects
   }
 
+  async findAllByUsuarioNoOffset (userId) {
+    const allObjects = await database.Plantacao.findAll({
+      where: {
+        usuario_id: userId
+      }
+    })
+    return allObjects
+  }
+
   async addPlanta (idPlanta, idPlantacao, idUser) {
     await this.plantas.findById(idPlanta)
     const plantacao = await super.findById(idPlantacao, idUser)

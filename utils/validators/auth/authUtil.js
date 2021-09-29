@@ -8,7 +8,7 @@ exports.signJWT = (req, res) => {
   }
   // env var
   jwt.sign({ user: body }, 'Any', {
-    expiresIn: '5m'
+    expiresIn: process.env.JWT_EXPIRATION
   }, (err, token) => {
     if (err) {
       return res.status(500).send({ message: 'an error occurred during token signing' })
