@@ -8,7 +8,7 @@
     "test": "NODE_ENV=test jest",
     "posttest": "NODE_ENV=test npx sequelize db:migrate:undo:all",
     "dev": "nodemon -L --inspect -r dotenv/config ./index.js --u",
-    "start": "node -r dotenv/config ./index.js --u"
+    "start": "NODE_ENV=development node -r dotenv/config ./index.js --u"
   },
   "keywords": [],
   "author": "",

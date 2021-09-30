@@ -4,21 +4,27 @@ exports.agendaHorario = {
   0: [
     {
       name: 'primeira',
-      time: null,
+      time: new Date().toLocaleTimeString('pt-BR', {
+        timeZone: 'America/Sao_Paulo'
+      }),
       irrigated: false
     }
   ],
   1: [
     {
       name: 'primeira',
-      time: null,
+      time: new Date().toLocaleTimeString('pt-BR', {
+        timeZone: 'America/Sao_Paulo'
+      }),
       irrigated: false
     }
   ],
   2: [
     {
       name: 'primeira',
-      time: null,
+      time: new Date().toLocaleTimeString('pt-BR', {
+        timeZone: 'America/Sao_Paulo'
+      }),
       irrigated: false
     }
   ],
@@ -34,7 +40,9 @@ exports.agendaHorario = {
   4: [
     {
       name: 'primeira',
-      time: null,
+      time: new Date().toLocaleTimeString('pt-BR', {
+        timeZone: 'America/Sao_Paulo'
+      }),
       irrigated: false
     }
   ],
@@ -50,7 +58,9 @@ exports.agendaHorario = {
   6: [
     {
       name: 'primeira',
-      time: null,
+      time: new Date().toLocaleTimeString('pt-BR', {
+        timeZone: 'America/Sao_Paulo'
+      }),
       irrigated: false
     }
   ]
