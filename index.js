@@ -16,7 +16,7 @@ routes(app)
 
 app.use(errors)
 
-const port = 3001
+const port = process.env.PORT || 3001
 
 app.listen(port, () => {
   console.log('Servidor up na porta 3001')
