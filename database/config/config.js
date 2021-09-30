@@ -20,6 +20,7 @@ module.exports = {
     'password': process.env.DB_PASS_PRD,
     'database': process.env.DB_NAME_PRD,
     'host': process.env.DB_HOST_PRD,
-    'dialect': 'postgres'
+    'dialect': 'postgres',
+    ssl: true
   }
 }
