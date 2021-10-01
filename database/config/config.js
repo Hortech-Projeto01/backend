@@ -1,4 +1,5 @@
 /* eslint-disable quote-props */
+const fs = require('fs')
 module.exports = {
   'development': {
     'username': process.env.DB_USER_DEV,
@@ -24,7 +25,8 @@ module.exports = {
     dialectOptions: {
       ssl: {
         require: true,
-        rejectUnauthorized: false
+        // eslint-disable-next-line node/no-path-concat
+        ca: fs.readFileSync(`${__dirname}/us-east-1-bundle.pem`)
       }
     }
   }
