@@ -1,5 +1,4 @@
 /* eslint-disable quote-props */
-const fs = require('fs')
 module.exports = {
   'development': {
     'username': process.env.DB_USER_DEV,
@@ -24,9 +23,7 @@ module.exports = {
     'dialect': 'postgres',
     dialectOptions: {
       ssl: {
-        require: true,
-        // eslint-disable-next-line node/no-path-concat
-        ca: fs.readFileSync(`${__dirname}/us-east-1-bundle.pem`)
+        require: true
       }
     }
   }
