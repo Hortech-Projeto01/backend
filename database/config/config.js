@@ -21,10 +21,12 @@ module.exports = {
     'database': process.env.DB_NAME_PRD,
     'host': process.env.DB_HOST_PRD,
     'dialect': 'postgres',
-    dialectOptions: {
-      ssl: {
-        rejectUnauthorized: false
+    'dialectOptions': {
+      'ssl': {
+        'require': true,
+        'rejectUnauthorized': false
       }
-    }
+    },
+    'ssl': true
   }
 }
