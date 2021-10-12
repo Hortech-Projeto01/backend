@@ -5,13 +5,14 @@
 
 ###
 //Posts
+// Evitar retornar a senha na autenticacao
 POST {{url}}/auth/signup HTTP/1.1
 Content-Type: application/json
 Accept: application/json
 
 {
-    "email": "docinho@hotmail.com",
-    "nome": "Docinho",
+    "email": "dacio.bezerra@ccc.ufcg.edu.br",
+    "nome": "Dacinho",
     "senha": "something"
 }
 ###
@@ -20,7 +21,7 @@ Content-Type: application/json
 Accept: application/json
 
 {
-    "email": "docinho@hotmail.com",
+    "email": "dacio.bezerra@ccc.ufcg.edu.br",
     "senha": "something"
 }
 ###
